@@ -20,7 +20,7 @@ There should be two containers running, `andromeda-nakama-cdb` and `andromeda-na
 
 Once the stack is online, you can login to the developer console by opening a browser to `http://localhost:7351` or `http://127.0.0.1:7351`.
 
-Thee default username and password:
+The default username and password:
 
 ```shell
 # username
@@ -36,7 +36,7 @@ These default settings can be changed via the Nakama configuration file. Check t
 
 When the Docker instance starts, it will create a `./nakama/data/modules/` folder in the repo directory and mount it in the Docker instance.
 
-LUA scripts can be added to the `./nakama/data/modules/` to be made available to the server.
+LUA scripts can be added to the `./nakama/data/modules/` folder to be made available to the server.
 
 ## Stopping the Stack
 
