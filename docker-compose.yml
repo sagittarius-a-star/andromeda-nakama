@@ -1,10 +1,13 @@
 version: '3'
+
 services:
   cockroachdb:
     container_name: andromeda-nakama-cdb
     image: cockroachdb/cockroach:v19.1.2
     command: start --insecure --store=attrs=ssd,path=/var/lib/cockroach/
     restart: always
+    networks: 
+      - "andromeda-stack"
     volumes:
       - data:/var/lib/cockroach
     expose:
@@ -23,6 +26,8 @@ services:
           /nakama/nakama migrate up --database.address root@cockroachdb:26257 &&
           exec /nakama/nakama --name andromeda-nakama --database.address root@cockroachdb:26257
     restart: always
+    networks: 
+      - "andromeda-stack"    
     links:
       - "cockroachdb:db"
     depends_on:
@@ -42,5 +47,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
 volumes:
   data:
+
+networks:
+  andromeda-stack:
+    name: "andromeda-stack"
